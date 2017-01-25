@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html ng-app="chatunifran" ng-controller="authenticationController">
+<head>
+	<title>Chat Unifran</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<base href="/_repo/magazine-luiza/merchan/"></base>-->
+
+	<link rel="icon" type="image/png" href="content/img/icon.png" />
+    
+    <link rel="stylesheet" type="text/css" href="content/font/fontFamilyRoboto.css">
+    <link rel="stylesheet" type="text/css" href="content/font/fontFamilyIconsMaterial.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,700italic,500,500italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">-->
+	<!--<link rel="stylesheet" type="text/css" href="content/lib/font-awesome/font-awesome.min.css">-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="content/css/chat.css">
+    <link rel="stylesheet" type="text/css" href="content/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="content/lib/gear/gear.css">
+	<link rel="stylesheet" type="text/css" href="content/lib/magazine/magazine.css">
+	<link rel="stylesheet" href="content/lib/chosen/chosen.min.css">
+	<link rel="image_src" href="content/lib/chosen/chosen-sprite.png">
+	<link rel="stylesheet" href="content/lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="content/lib/bootstrap/bootstrap-extend.css">
+    <link rel="stylesheet" href="content/lib/bootstrap/site.css">
+
+	<script type="text/javascript" src="content/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="content/lib/bootstrap/bootstrap.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-route.min.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-animate.min.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-messages.min.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-input-masks/releases/angular-input-masks-dependencies.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-input-masks/releases/angular-input-masks-standalone.js"></script>
+	<script type="text/javascript" src="content/lib/angular/angular-input-masks/releases/angular-locale_pt-br.js"></script>
+	<script type="text/javascript" src="content/lib/chosen/chosen.jquery.min.js"></script>
+	<script type="text/javascript" src="content/lib/chosen/angular-chosen.js"></script>
+	<script type="text/javascript" src="content/lib/gear/gear.js"></script>
+	<script type="text/javascript" src="content/lib/gear/gear-ui.js"></script>
+	<script type="text/javascript" src="content/lib/magazine/magazine.js"></script>
+    <script src=/socket.io/socket.io.js></script>
+	<script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/routes.js"></script>
+	<script type="text/javascript" src="app/controllers/authenticationController.js"></script>
+	<script type="text/javascript" src="app/controllers/homeController.js"></script>
+    <script type="text/javascript" src="content/app/directives/mlLoadingDirective.js"></script>
+    <script type="text/javascript" src="app/controllers/pessoasOnlineController.js"></script>
+    <script type="text/javascript" src="app/controllers/chatController.js"></script>
+<style>
+   #stripHeader {
+            margin: 64px 0 50px;
+            z-index: 11 !important;
+            position: fixed;
+        }
+        
+        #stripRodape {
+            bottom: 0;
+            position: fixed;
+        }
+        
+        .strip-multi-colors {
+            float: left;
+            height: 5px;
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .yellow {
+            background-color: #FFCE00;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .orange {
+            background-color: #0083CA;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .red {
+            background-color: #E25335;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .rose {
+            background-color: #DE349E;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .purple {
+            background-color: #BF2FDC;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .deep-purple {
+            background-color: #5D33D5;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .blue {
+            background-color: #2B7CD7;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .cyan {
+            background-color: #33C3DD;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .light-green {
+            background-color: #32D9A1;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .green {
+            background-color: #3FCB2A;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .slide-anim.ng-enter {
+            max-height: 0;
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 200ms ease-in-out 200ms;
+        }
+        
+        .slide-anim.ng-enter-active {
+            max-height: 2000px;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .slide-anim.ng-leave {
+            max-height: 2000px;
+            transform: translateX(0);
+            opacity: 1;
+            transition: 200ms ease-in-out;
+        }
+        
+        .slide-anim.ng-leave-active {
+            max-height: 0;
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+	<gear-skeleton>
+		<gear-login>
+			<div class="box-login">
+			<div class="logo-container">
+				<div class="logo-wrap">
+					<img src="content/img/logo.png" alt="Magazine Luiza">
+				</div>
+			</div>
+			<gear-login-container>
+				<form name="login" ng-submit="logIn()">
+					<div class="gear-form-group">
+						<input id="txt-log-user" type="text" class="gear-form-control gear-dark-theme" ng-model="logInfo.usuario" gear-form-control autocomplete="off" autofocus>
+						<label for="txt-log-user" class="gear-form-floating-label">Código de Acesso</label>
+					</div>
+					<div class="gear-form-group">
+						<input id="txt-log-pass" type="password" class="gear-form-control gear-dark-theme" ng-model="logInfo.senha" gear-form-control autocomplete="off">
+						<label for="txt-log-pass" class="gear-form-floating-label">Senha</label>
+					</div>
+					<div class="gear-button-container gear-center">
+						<button class="gear-mt gear-btn  gear-full gear-bold gear-loader" ng-class="{'gear-icon gear-loading gear-sm': loading, 'gear-danger': errorMessage, 'gear-primary': !errorMessage}" ng-disabled="loading">
+							<i class="material-icons gear-icon gear-spinner">refresh</i>
+							<div class="gear-label">{{errorMessage || "Entrar"}}</div>
+						</button>
+					</div>
+				</form>
+			</gear-login-container>
+			</div>
+		</gear-login>
+		<gear-container>
+			<gear-toolbar>
+				<div class="logo-container">
+					<div class="logo-wrap">
+						<img src="content/img/logo-magazine.png" alt="Magazine Luiza">
+					</div>
+				</div>
+				<gear-user-area gear-primary-info="usuario.nome"  gear-options="options"></gear-user-area>
+			</gear-toolbar>
+			<gear-sidenav gear-side="left">
+				<!-- <div class="gear-search" style="margin: 15px 15px 0;">
+					<div class="gear-form-group">
+						<i class="material-icons gear-icon">search</i>
+						<input id="txt-gear-main-menu-search" type="text" class="gear-form-control">
+						<label for="txt-gear-main-menu-search" class="gear-form-floating-label">Encontre uma opção</label>
+					</div>
+				</div> -->
+				<gear-main-menu gear-list="menuList" gear-empty-message="Nenhum item encontrado" gear-on-favorite="onMenuFavorite" gear-on-select="closePanel"></gear-main-menu>
+				
+			</gear-sidenav>
+			<gear-sidenav-background></gear-sidenav-background>
+			<gear-body>
+				<ng-view></ng-view>
+			</gear-body>
+		</gear-container>
+	</gear-skeleton>
+	<gear-copy-button></gear-copy-button>
+	<gear-snack-container></gear-snack-container>
+
+	
+</body>
+</html>

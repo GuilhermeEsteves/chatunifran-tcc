@@ -1,0 +1,54 @@
+<div class="gear-main-content-wrap" style="width: 400px;">
+	<div id="error-panel" class="gear-mt gear-panel gear-hidden-slide">
+		<h1 class="gear-panel-title">Erro 404</h1>
+		<div class="gear-panel-content">
+			<div class="sad-face right">:(</div>
+			<p>Página não encontrada</p>
+			<div class="gear-button-container">
+				<button id="btn-get-me-outta-here" type="button" class="gear-mt gear-btn gear-primary gear-will-raise" ng-click="openMenu()">Me tire daqui!</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	setTimeout(function(){
+		$('#error-panel').addClass('gear-show');
+	}, 1);
+</script>
+<style type="text/css">
+	#error-panel {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.sad-face {
+		font-size: 100px;
+		position: absolute;
+		color: rgba(0,0,0,0.5);
+		cursor: default;
+	}
+
+		.sad-face.right {
+			transform: rotate(35deg);
+			top: -15px;
+			right: 0;
+			transition: right 2s ease-in-out;
+		}
+
+			.sad-face.right.out {
+				right: -100px;
+				transition-duration: 400ms;
+			}
+
+		.sad-face.left {
+			transform: rotate(135deg);
+			left: 0;
+			bottom: 0;
+			transition: left 2s ease-in-out;
+		}
+
+			.sad-face.left.out {
+				left: -100px;
+				transition-duration: 400ms;
+			}
+</style>

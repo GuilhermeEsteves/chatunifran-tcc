@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <link href="css/materialize.min.css" rel="stylesheet">
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/js.cookie.js"></script>
+        <!--<script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/routes.js"></script>
+        <script src="app/controllers/loginController.js"></script>-->
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col m6 offset-m3" style="margin-top:5%">
+                    <h2 class="center-align">Login</h2>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="txtRgm" type="number" class="validate">
+                                    <label for="txtRgm">RGM</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="txtPassword" type="password" class="validate">
+                                    <label for="txtPassword">Senha</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <p>
+                                        <input type="checkbox" id="remember">
+                                        <label for="remember">Lembrar-me</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col m12">
+                                    <p class="right-align">
+                                        <button id="btnEntrar" class="btn btn-large waves-effect waves-light" 
+                                            type="button" name="action">Entrar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    
+    if($.cookie("usuarioChat"))
+        if(JSON.parse($.cookie("usuarioChat")))
+            window.location.href = "/chat";
+
+    $('#btnEntrar').click(function(){
+        if($('#txtRgm').val() == "" || $('#txtPassword').val() == ""){
+            alert('Preencha os campos');
+            return;
+        }
+
+        $.ajax({
+            url: "http://localhost:3000/login/" + $('#txtRgm').val(),
+            headers: {
+                'password': $('#txtPassword').val()
+            },
+            method: 'GET',
+            success: function(data){
+                $.cookie("usuarioChat", JSON.stringify(data));
+                window.location.href = "/chat";
+            },
+            error: function(xhr){
+                console.log(xhr);
+            }
+        })
+    });
+</script>

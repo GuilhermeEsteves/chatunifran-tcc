@@ -1,0 +1,125 @@
+#stripHeader {
+            z-index: 1090 !important;
+            position: fixed;
+        }
+        
+        #stripRodape {
+            bottom: 0;
+            position: fixed;
+        }
+        
+        .strip-multi-colors {
+            float: left;
+            height: 5px;
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .yellow {
+            background-color: #FFCE00;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .orange {
+            background-color: #0083CA;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .red {
+            background-color: #E25335;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .rose {
+            background-color: #DE349E;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .purple {
+            background-color: #BF2FDC;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .deep-purple {
+            background-color: #5D33D5;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .blue {
+            background-color: #2B7CD7;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .cyan {
+            background-color: #33C3DD;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .light-green {
+            background-color: #32D9A1;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .green {
+            background-color: #3FCB2A;
+            width: 10%;
+            height: 5px;
+            float: left;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+        
+        .slide-anim.ng-enter {
+            max-height: 0;
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 200ms ease-in-out 200ms;
+        }
+        
+        .slide-anim.ng-enter-active {
+            max-height: 2000px;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .slide-anim.ng-leave {
+            max-height: 2000px;
+            transform: translateX(0);
+            opacity: 1;
+            transition: 200ms ease-in-out;
+        }
+        
+        .slide-anim.ng-leave-active {
+            max-height: 0;
+            transform: translateX(-100%);
+            opacity: 0;
+        }

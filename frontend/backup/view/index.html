@@ -1,0 +1,86 @@
+<html ng-app="chatunifran">
+    <head>
+        <link href="css/materialize.min.css" rel="stylesheet">
+        <link href="css/font.css" rel="stylesheet" type="text/css"/>
+        <link href="css/icon.css" rel="stylesheet"/>
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/js.cookie.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/routes.js"></script>
+        <script src="app/controllers/loginController.js"></script>
+    </head>
+    <body>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">Meu Perfil</a></li>
+            <li><a href="#!">Sei lá</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Sair</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper" style="background-color: #26a69a">
+                <a href="javascript:void(0);" class="brand-logo"><i class="material-icons">chat</i>Chat Unifran</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <div class="nav-wrapper">
+                            <form>
+                                <div class="input-field">
+                                <input id="search" type="search" placeholder="encontre alguém">
+                                <label for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li><a href="javascriot:void(0);">Salas<i class="material-icons right">class</i></a></li>
+                    <li><a href="javascriot:void(0);">Pessoas Online<i class="material-icons right">people</i></a></li>
+                    <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                            <i class="material-icons right">settings arrow_drop_down</i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#!">Salas<i class="material-icons right">class</i></a></li>
+                    <li><a href="#!">Salas<i class="material-icons right">class</i></a></li>
+                    <li><a href="#!">Pessoas Online<i class="material-icons right">people</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>
+<script>
+    $(".button-collapse").sideNav();
+    $(".dropdown-button").dropdown();
+</script>
+
+
+<!--<div class="nav-wrapper">
+                <a href="#!" class="brand-logo"><i class="material-icons">chat</i>Chat Unifran</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#!">Salas<i class="material-icons right">class</i></a></li>
+                    <li><a href="#!">Pessoas Online<i class="material-icons right">people</i></a></li>
+                    <li>
+                        <div class="nav-wrapper">
+                            <form>
+                                <div class="input-field">
+                                <input id="search" type="search" placeholder="encontre alguém">
+                                <label for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                            <i class="material-icons right">settings arrow_drop_down</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>-->

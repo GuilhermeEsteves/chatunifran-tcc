@@ -1,0 +1,64 @@
+<div class="page">
+    <div class="page-content padding-20 container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 style="color:white;text-align: center;">Chat Geral</h2>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                                </span>Refresh</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                                </span>Available</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                                </span>Busy</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                    Away</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                    Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-chat shown">
+                        <ul id="divConversa" class="chat" style="overflow-y:auto; height:500px;">
+                            <li>
+                                <img src="http://s8.postimg.org/76bg2es2t/index.png">
+                                <div class="message">o hai!</div>
+                            </li>
+                            <li>
+                                <img src="http://lorempixel.com/100/100/people/4/"><div class="message"><p>Hi! how are you :] </p></div></li>
+                            <li>
+                                <img src="http://s8.postimg.org/76bg2es2t/index.png">
+                                <div class="message current">...</div>
+                            </li>
+                            <li>
+                                <img src="http://s8.postimg.org/76bg2es2t/index.png">
+                                <div class="message current">...</div>
+                            </li>
+                        </ul>
+                        <div class="meta-bar chat" style="position:relative;bottom:0px">
+                            <input class="nostyle chat-input" type="text" placeholder="Message..."> 
+                            <i id="btnEnviarMensagem" style="cursor:pointer;" class="material-icons">send</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#btnEnviarMensagem').click(function(){
+        $('#divConversa').append($('#divConversa').html());
+    });
+
+
+    
+</script>

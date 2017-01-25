@@ -1,0 +1,27 @@
+{
+  "name": "chatunifran",
+  "version": "1.0.0",
+  "description": "Chat TCC",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://estevesguilherme@bitbucket.org/estevesguilherme/chatunifran.git"
+  },
+  "author": "Bruno e Guilherme",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/estevesguilherme/chatunifran#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "consolidate": "^0.14.1",
+    "express": "^4.14.0",
+    "express-load": "^1.1.15",
+    "mongoose": "^4.6.1",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-sequence": "^3.1.0",
+    "socket.io": "^1.4.8",
+    "vash": "^0.12.1"
+  }
+}

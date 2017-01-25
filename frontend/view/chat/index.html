@@ -1,0 +1,198 @@
+<style>
+    .avatar-uni {
+        width: 100px;
+        box-shadow: 0px 5px 7px rgb(96, 86, 86);
+        -webkit-box-shadow: 0px 5px 7px rgb(96, 86, 86);
+        -moz-box-shadow: 0px 5px 7px rgb(96, 86, 86);
+    }
+    
+    .nome-aulo {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 13px;
+    }
+    
+    .curso-aluno {
+        margin-top: -5px;
+        font-size: 12px;
+        margin: 0 0 15px 0;
+    }
+    
+    .widget-color {
+        padding: 10px;
+    }
+    
+    .bola-noti {
+        background: #ec9940;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 20px;
+        color: #fff;
+        float: right;
+        margin: -1px 0 0 -3px;
+        position: absolute;
+    }
+    
+    .bola-online {
+        background: #35ac19;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 20px;
+        margin: -19px 0 0 68px;
+        position: absolute;
+        box-shadow: 0px 5px 7px rgb(96, 86, 86);
+        -webkit-box-shadow: 0px 2px 7px rgb(96, 86, 86);
+        -moz-box-shadow: 0px 5px 7px rgb(96, 86, 86);
+    }
+
+    .bola-offline {
+        background: silver;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 20px;
+        margin: -19px 0 0 68px;
+        position: absolute;
+        box-shadow: 0px 5px 7px rgb(96, 86, 86);
+        -webkit-box-shadow: 0px 2px 7px rgb(96, 86, 86);
+        -moz-box-shadow: 0px 5px 7px rgb(96, 86, 86);
+    }
+</style>
+<!--cor verde #35ac19-->
+    <div class="page-content padding-30 container-fluid">
+      <h1 style="text-align: center;font-size: 34px;">Chat</h1>
+       <div class="row">
+            <div class="col-md-2">
+                <div class="gear-form-wrap bg-screen-full">
+                    <div class="gear-form-group">
+                        <input id="nome-area-negocio" type="text" class="gear-form-control" required ng-model="filterUser" gear-form-control>
+                        <label for="nome-area-negocio" class="gear-form-floating-label">Pesquisar Usuário...</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divUsersOnline" class="row">
+            <div class="col-md-2" ng-repeat="user in users | filter:filterUser">
+                <div class="widget-color  text-center">
+                    <div class="widget-header">
+                        <div class="widget-header-content">
+                            <a ng-click="openChat(user);" class="avatar avatar-uni" href="javascript:void(0)">
+                                <span ng-if="user.messageCount" class="bola-noti">{{user.messageCount}}</span>
+                                <img  ng-src="content/img/users/{{user._id}}.jpg" alt="..." style="height: 100px;cursor:pointer;">
+                                <span class="{{user.online? 'bola-online' : 'bola-offline'}}"></span>
+                            </a>
+                            <div class="nome-aulo">{{user.nome}}</div>
+                            <div class="curso-aluno">{{user.curso? user.curso : user.typeUser}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalChat" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog " role="document ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <button ng-click="closeChat()" type="button" class="close" data-dismiss="modal" aria-label="Close ">
+                                <span aria-hidden="true ">&times;</span>
+                            </button>
+                        <img ng-src="content/img/users/{{talkActive.user._id}}.jpg" alt="..." style="width: 8%;border-radius: 31px;">
+                        <div style="display:inline-flex" class="nome-aulo">{{talkActive.user.nome}}</div>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="row row-lg ">
+                            <div class="col-md-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <div class="list-chat shown">
+                                    <ul id="divTalk" class="chat" style="overflow-y:auto; height:296px;">
+                                    
+                                    </ul>
+                                    <div ng-show="!bloquedTalk" class="meta-bar chat" style="position:relative;bottom:0px">
+                                        <input ng-keypress="sendMessageKeyPress($event);" id="txtMessage" ng-model="txtMessage" class="nostyle chat-input" type="text" placeholder="Message..."> 
+                                        <i ng-click="sendMessage();" style="cursor:pointer;" class="material-icons">send</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div id="divChat" style="display:none;" class="row">
+            <div class="col-md-12">
+                <i ng-click="closeChat();" 
+                        style="cursor:pointer;border: 2px solid;border-radius: 16px;color: black;" class="material-icons">close</i>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 style="color:white;text-align: center;">{{userChat.nome}}</h2>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                                </span>Refresh</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                                </span>Available</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                                </span>Busy</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                    Away</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                    Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-chat shown">
+                        <ul id="divTalk" class="chat" style="overflow-y:auto; height:296px;">
+                           
+                        </ul>
+                        <div class="meta-bar chat" style="position:relative;bottom:0px">
+                            <input ng-keypress="sendMessageKeyPress($event);" id="txtMessage" ng-model="txtMessage" class="nostyle chat-input" type="text" placeholder="Message..."> 
+                            <i ng-click="sendMessage();" style="cursor:pointer;" class="material-icons">send</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+<audio src="content/songs/msn_alert.mp3" controls id="msnSong" style="display:none;">
+    <p>Seu navegador não suporta o elemento audio </p>
+</audio>
+<script>
+
+    var audio = new Audio('content/songs/msn_alert.mp3');
+    
+
+     document.addEventListener('DOMContentLoaded', function () {
+            if (Notification.permission !== "granted")
+                Notification.requestPermission();
+            });
+
+            function notifyMe() {
+                if (!Notification) {
+                    alert('Desktop notifications not available in your browser. Try Chromium.'); 
+                    return;
+                }
+
+                if (Notification.permission !== "granted")
+                    Notification.requestPermission();
+                else {
+                    var notification = new Notification('Mensagem de Dayane Martins', {
+                    icon: '/content/img/users/10.jpg',
+                    body: "Oi gostoso...!",
+                    });
+
+                    notification.onclick = function () {
+                    window.open("http://stackoverflow.com/a/13328397/1269037");      
+                };
+            }
+        }
+</script>
